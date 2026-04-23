@@ -1,0 +1,22 @@
+{% extends 'gestion/base.html' %}
+{% block content %}
+  <h1>Libros</h1>
+  <a class="btn btn-success mb-3" href="{% url 'crear_libro' %}">Agregar Libro</a>
+
+  <ul class="list-group">
+    {% for libro in libros %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <strong>{{ libro.titulo }}</strong> — {{ libro.genero }} <br>
+          <small>Autor: {{ libro.autor.nombre }} | {{ libro.fecha_publicacion }} | ISBN: {{ libro.isbn }}</small>
+        </div>
+        <div>
+          <a class="btn btn-sm btn-primary" href="{% url 'editar_libro' libro.pk %}">Editar</a>
+          <a class="btn btn-sm btn-danger" href="{% url 'eliminar_libro' libro.pk %}">Eliminar</a>
+        </div>
+      </li>
+    {% empty %}
+      <li class="list-group-item">No hay libros aún.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
