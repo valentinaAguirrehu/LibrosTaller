@@ -1,0 +1,10 @@
+{% extends 'gestion/base.html' %}
+{% block content %}
+  <h1>{% if object %}Editar Libro{% else %}Crear Libro{% endif %}</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary" type="submit">Guardar</button>
+    <a class="btn btn-secondary" href="{% url 'lista_libros' %}">Cancelar</a>
+  </form>
+{% endblock %}

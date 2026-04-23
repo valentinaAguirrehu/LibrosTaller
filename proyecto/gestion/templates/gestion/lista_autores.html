@@ -1,0 +1,22 @@
+{% extends 'gestion/base.html' %}
+{% block content %}
+  <h1>Autores</h1>
+  <a class="btn btn-success mb-3" href="{% url 'crear_autor' %}">Agregar Autor</a>
+
+  <ul class="list-group">
+    {% for autor in autores %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <strong>{{ autor.nombre }}</strong> — {{ autor.correo }} <br>
+          <small>{{ autor.nacionalidad }} | {{ autor.fecha_nacimiento }}</small>
+        </div>
+        <div>
+          <a class="btn btn-sm btn-primary" href="{% url 'editar_autor' autor.pk %}">Editar</a>
+          <a class="btn btn-sm btn-danger" href="{% url 'eliminar_autor' autor.pk %}">Eliminar</a>
+        </div>
+      </li>
+    {% empty %}
+      <li class="list-group-item">No hay autores aún.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
