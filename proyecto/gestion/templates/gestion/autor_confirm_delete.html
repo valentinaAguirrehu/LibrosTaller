@@ -1,0 +1,10 @@
+{% extends 'gestion/base.html' %}
+{% block content %}
+  <h1>Eliminar Autor</h1>
+  <p>¿Desea eliminar "{{ object.nombre }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button class="btn btn-danger" type="submit">Sí, eliminar</button>
+    <a class="btn btn-secondary" href="{% url 'lista_autores' %}">Cancelar</a>
+  </form>
+{% endblock %}
